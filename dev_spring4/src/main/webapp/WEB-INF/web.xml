@@ -4,11 +4,11 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
-	<context-param><!-- 서블릿 요청이 일어나면 계속읽는다. -->
+	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-						/WEB-INF/spring/spring-service.xml,
-						/WEB-INF/spring/spring-data.xml
+			/WEB-INF/spring/spring-service.xml,
+			/WEB-INF/spring/spring-data.xml
 		</param-value>
 	</context-param>
 	

@@ -1,8 +1,7 @@
 <%
-	StringBuilder path=new StringBuilder(request.getContextPath());//물리적인 위치를 찾아주는애다.
+	StringBuilder path = new StringBuilder(request.getContextPath());
 	path.append("/");
 %>
-
 <link rel="stylesheet" type="text/css" href="<%=path.toString() %>themes/default/easyui.css"/>
 <link rel="stylesheet" type="text/css" href="<%=path.toString() %>themes/icon.css" />
 <link rel="stylesheet" type="text/css" href="<%=path.toString() %>demo/demo.css" />

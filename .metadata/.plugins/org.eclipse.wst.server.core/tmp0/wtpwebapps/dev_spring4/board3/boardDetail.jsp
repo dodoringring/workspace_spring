@@ -30,10 +30,9 @@
 <title>글상세보기</title>
 <!-- 공통 코드 include처리 -->
 <%@ include file="../common/easyUI_common.jsp" %>
-<script defer type="text/javascript">
+<script type="text/javascript">
 	function addAction(){
-
-		$("#f_boardAdd").attr("action","/board3/boardInsert.sp");
+		$("#f_boardAdd").attr("action","/board3/boardInsert.st3");
 		$("#f_boardAdd").submit();
 		//부모창에 함수를 호출할때 opener.함수명();
 		//opener.boardList();
@@ -52,9 +51,9 @@
 		//$('#d_boardUpd').dialog('open');	
 		//$('#d_boardUpd').dialog('refresh', '');
 	}
-	boardUpd=()=>{
-		$(#"uf_board").attr("action","/board3/boardUpdate.sp");
-		$(#"uf_board").submit();
+	boardUpd = () => {
+		$("#uf_board").attr("action","/board3/boardUpdate.st3");
+		$("#uf_board").submit();		
 	}
 	//댓글쓰기
 	function repleForm(){
@@ -62,7 +61,7 @@
 	}
 	//글삭제하기 이벤트 처리
 	function boardDelView(){
-		console.log(alert("boardDelView호출 성공"));
+		console.log("boardDelView호출 성공");
 		  $('#d_boardDel').dialog({
 			    title: '글삭제',
 			    buttons: btn_boardDel,
@@ -76,7 +75,8 @@
 	   $('#d_boardDel').dialog('open');		
 	}
 	//글삭제 화면에서 확인 버튼을 클릭했을 때
-	function boardDel(){
+	const boardDel = () => {
+		alert('삭제처리');
 		const db_pw = '<%=bm_pw%>'
 		const u_pw = $("#u_pw").textbox('getValue');
 		//alert("db_pw:"+db_pw+", u_pw:"+u_pw);
@@ -89,7 +89,7 @@
 			$.messager.confirm('Confirm','정말 삭제하시겠습니까?',function(r){
 			 //r:true-ok, false-cancel
 				if (r){//자바스크립트는 0이면 false 나머지 true
-			    	location.href="./boardDelete.sp?&bm_no=<%=bm_no%>";    
+			    	location.href="./boardDelete.st3?bm_no=<%=bm_no%>";    
 			    }
 			});
 		}else{
@@ -101,7 +101,7 @@
 		 $('#d_boardDel').dialog('close');
 	}
 	function boardList(){
-		location.href="/board/boardList.sp";
+		location.href="/board3/boardList.st3";
 	}
 </script>
 </head>
@@ -123,7 +123,7 @@
 	    	</tr>
 	    	<tr>
 	    	<td>내용</td>
-	    	<td><input id="bm_content" value="<%=bm_content %>" name="bm_content" data-options="multiline:'true', width:'570px', height:'90px'" class="easyui-textbox"></td>
+	    	<td><input id="bm_content" value="<%="내용" %>" name="bm_content" data-options="multiline:'true', width:'570px', height:'90px'" class="easyui-textbox"></td>
 	    	</tr>
 	    	<tr>
 	    	<td>비밀번호</td>
@@ -146,15 +146,15 @@
 		<!-- 글삭제  끝   -->
 		<!-- 글수정 시작 -->
 		<div id="d_boardUpd" closed="true" class="easyui-dialog" style="padding:20px 50px">
-<form id="uf_board" method="get" >
-<input type="hidden" id="bm_no" name="bm_no" value="<%=bm_no%>">
+<form id="uf_board" method="get">
+<input type="hidden" id="bm_no" name="bm_no" value="<%=bm_no %>">
 <input type="hidden" id="bs_seq" name="bs_seq" value="<%=1 %>">
 <input type="hidden" id="old_file" name="old_file" value="이전파일명">
 <table align="center" width="650px" height="280px">
 	<tr>
 		<td width="120px">글제목</td>
 		<td width="580px">
-			<input id="bm_title" value="<%=bm_title %>" name="bm_title" class="easyui-textbox">
+			<input id="bm_title" value="<%=getBoardList.get(0).get("BM_TITLE").toString() %>" name="bm_title" class="easyui-textbox">
 		</td>
 	</tr>
 	<tr>
@@ -172,7 +172,7 @@
 	<tr>
 		<td width="120px">첨부파일</td>
 		<td width="580px">
-			<input id="bs_file" name="bs_file" class="easyui-filebox" style="width:100%">
+			<input id="b_file" name="b_file" class="easyui-filebox" style="width:100%">
 		</td>
 	</tr>	
 	<tr>
@@ -192,17 +192,16 @@
 		<!-- 댓글쓰기 시작 -->
 <!--================== [[댓글쓰기 화면]] ==================-->
 <div id="dlg_boardAdd" title="댓글쓰기" class="easyui-dialog" style="width:600px;height:400px;padding:10px" data-options="closed:'true',modal:'true',footer:'#tbar_boardAdd'">	
-
 <!-- 
 form전송시 encType옵션이 추가되면 request객체로 사용자가 입력한 값을 꺼낼 수 없다.
 MultipartRequest  => cos.jar
  -->	
-<!--  	<form id="f_boardAdd" method="post" enctype="multipart/form-data"> -->
+<!-- 	<form id="f_boardAdd" method="post" enctype="multipart/form-data"> -->
 	<form id="f_boardAdd" method="get">
-	<input type="hidden" name="bm_no" value="0">
-	<input type="hidden" name="bm_group" value="0">
-	<input type="hidden" name="bm_pos" value="0">
-	<input type="hidden" name="bm_step" value="0">
+	<input type="hidden" name="bm_no" value="<%=bm_no%>">
+	<input type="hidden" name="bm_group" value="<%=bm_group%>">
+	<input type="hidden" name="bm_pos" value="<%=bm_pos%>">
+	<input type="hidden" name="bm_step" value="<%=bm_step%>">
 	<!-- <form id="f_boardAdd"> -->
 	<table>
 		<tr>
@@ -215,12 +214,6 @@ MultipartRequest  => cos.jar
 			<td width="100px">작성자</td>
 			<td width="500px">
 				<input class="easyui-textbox" data-options="width:'150px'" id="bm_writer" name="bm_writer" required>
-			</td>
-		</tr>
-		<tr>
-			<td width="100px">이메일</td>
-			<td width="500px">
-				<input class="easyui-textbox" data-options="width:'250px'" id="bm_email" name="bm_email">
 			</td>
 		</tr>
 		<tr>			

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<bean id="data-source-target" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:oracle:thin:@127.0.0.1:1521:orcl11</value>
+		</property>
+		<property name="username">
+			<value>scott</value>
+		</property>
+		<property name="password">
+			<value>tiger</value>
+		</property>
+	</bean>
+    <!-- Transaction manager for a single JDBC DataSource -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="data-source-target"/>
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"><!-- 마이바티스-spring.1.3.0.jar에서 제공. 연결담당. -->
+		<property name="configLocation" value="WEB-INF/mybatis-config.xml"/><!-- mybatis-config.xml을 주입한다. -->
+		<property name="dataSource" ref="data-source-target"/>
+	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"><!-- 마이바티스에있다. -->
+		<constructor-arg index="0" ref="sqlSessionFactory"/><!--SqlSessionFactory를 의지하고 있다.  -->
+	</bean>	
+	<bean id="board-dao" class="com.example.demo.dao.BoardDao"><!-- 자바가 아니다. xml안에 bean태그로 있다. -->
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+	</bean>		
+</beans>

@@ -7,7 +7,6 @@
 <title>b.jsp페이지</title>
 </head>
 <body>
-b.jsp내용부분입니다.
-
+b.jsp페이지 내용부분입니다.
 </body>
 </html>

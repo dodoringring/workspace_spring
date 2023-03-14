@@ -21,6 +21,13 @@
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- init-param이 인터셉트해서 요청할때마다 이 xml을 읽어들인다.
+			init-param vs context-param
+			컨텍스트파람은 서버를 기동할 때 한번 읽으면 쭉 기억한다. 서버가 다운될 때 까지
+			이닛 파람안에 있는것은 .sp에대한 요청이 들어 올 때 마다 이 xml을 새로 읽어들인다. 싱글톤 패턴이다.
+			스레드는 톰캣이 관리 해 준다.
+			.sp로 요청이 들어오면 DispatcherServlet이 인터셉트 한다.
+		 -->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
@@ -30,6 +37,14 @@
 		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
+		<!--  확장자가 sp로 끝나면 servlet url 안에 매핑한다
+				Pojo 하던걸 스프링으로 이관하고 싶다. 스프링은 Bean을 관리해준다. 객체를 인스턴스화 해준다. 하나는 게으른-beanFactory 인스턴스화 두번째는 이른 인스턴스화-어플리케이션 컨택스트
+				Dependency Injection 객체주입 해준다. 두 객체가 해줌 beanFactory application
+				* 다된다. 앞에 모든형식 다 와도 뒤에 .sp붙으면 된다. URL패턴.
+				메인메소드가 없으니까 웹에서 돌릴것다. 크롬에서 요청. 크롬에서 요청하려면 url알아야한다.
+				DispatcherServlet 즉, 스프링이 제공하는 클래스가 인터셉트한다.
+				 
+		 -->
 		<url-pattern>*.sp</url-pattern>
 	</servlet-mapping>
 

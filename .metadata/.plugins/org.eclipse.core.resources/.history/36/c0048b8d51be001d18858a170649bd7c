@@ -1,0 +1,30 @@
+package com.example.demo.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.AbstractController;
+
+public class Listcontroller extends AbstractController {
+	Logger logger =LoggerFactory.getLogger(Listcontroller.class);
+	//@Autowired대신에 수동으로 하자
+	List<String> insaBean=null;
+	public void setInsaBean(List<String> insaBean) {
+		this.insaBean = insaBean;
+	}
+	//메소드의 파라미터로 요청객제와 응답객체를 주입 받고 있다는것은 서블릿에 의존적인 프레임워크를 의미함
+	@Override
+	protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("insaBean",insaBean);
+		mav.setViewName("di/insaList");
+		
+		return mav;
+	}
+
+}

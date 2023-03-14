@@ -4,7 +4,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="BMVO" type="com.example.demo.vo.BoardMasterVO"/>
-	
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/mybatis/mapper/board.xml" />

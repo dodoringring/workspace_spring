@@ -1,0 +1,17 @@
+package com.example.demo.di;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class InsaMapTest {
+	InsaMapTest(){
+		
+	}
+	
+	public static void main(String[] args) {
+		ApplicationContext context = new ClassPathXmlApplicationContext("com\\example\\demo\\di\\insaMap.xml");
+		InsaMap insaMap=(InsaMap)context.getBean("insaMap");
+		
+	}
+
+}

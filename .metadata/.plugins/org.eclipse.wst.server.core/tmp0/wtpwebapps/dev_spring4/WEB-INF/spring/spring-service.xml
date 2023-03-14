@@ -13,6 +13,6 @@
 	    <property name="defaultLocale" value="ko">
 	</property></bean>	
 	<bean id="board-logic" class="com.example.demo.logic.BoardLogic">
-	<property name="boardDao" ref="board-dao"/>
+		<property name="boardDao" ref="board-dao"/>
 	</bean>
 </beans>

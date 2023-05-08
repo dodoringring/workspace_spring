@@ -2,4 +2,6 @@
 <typeInfoHistroy>
     <typeInfo handle="=kh_spring4/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.di{HelloBean.java[HelloBean" modifiers="513" timestamp="1677728939441"/>
     <typeInfo handle="=kh_spring4/C:\/Users\/user1\/.m2\/repository\/org\/springframework\/spring-webmvc\/4.3.30.RELEASE\/spring-webmvc-4.3.30.RELEASE.jar=/maven.pomderived=/true=/=/maven.pomderived=/true=/=/org.eclipse.jst.component.archivename=/spring-webmvc-4.3.30.RELEASE.jar=/=/maven.groupId=/org.springframework=/=/maven.artifactId=/spring-webmvc=/=/maven.version=/4.3.30.RELEASE=/=/maven.scope=/compile=/&lt;org.springframework.web.servlet.mvc.multiaction(MultiActionController.class[MultiActionController" modifiers="1048609" timestamp="1677727249288"/>
+    <typeInfo handle="=kh_exam4/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.example.demo.logic{MemberService.java[MemberService" modifiers="513" timestamp="1682556560183"/>
+    <typeInfo handle="=kh_exam4/C:\/jdk-11.0.10\/lib\/jrt-fs.jar`jdk.compiler=/maven.pomderived=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/11\/docs\/api\/=/&lt;com.sun.source.tree(MemberSelectTree.class[MemberSelectTree" modifiers="1537" timestamp="1669605465348"/>
 </typeInfoHistroy>

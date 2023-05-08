@@ -2,4 +2,7 @@
 <aop-reference-model>
 <aop-project name="kh_spring4"/>
 <aop-project name="dev_spring4"/>
+<aop-project name="kh_exam4"/>
+<aop-project name="basic"/>
+<aop-project name="kh_test"/>
 </aop-reference-model>

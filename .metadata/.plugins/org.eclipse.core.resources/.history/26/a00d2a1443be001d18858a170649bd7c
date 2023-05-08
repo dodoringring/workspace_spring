@@ -1,8 +1,0 @@
-package com.example.demo.di;
-
-public class SonataTest {
-	public static void main (String arg[]) {
-		Sonata myCar=new Sonata();
-		System.out.println(myCar.toString());
-	}
-}

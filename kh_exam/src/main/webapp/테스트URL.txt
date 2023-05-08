@@ -1,0 +1,9 @@
+1. webapp > jstl-base아래
+http://localhost:8000/kh_exam/jstl-base/a.jsp로 하면
+http://localhost:8000/kh_exam/jstl-base/b.jsp로 이동함
+
+2. 
+http://localhost:8000/kh_exam/jstl-base/a1.jsp로 요청하면 forward처리되어
+같은 경로에 있는 b1.jsp페이지 내용이 출력됨
+
+3.
